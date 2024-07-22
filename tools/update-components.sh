@@ -66,12 +66,13 @@ cp -rf $AR_COMPS/bluepad32/components/* $AR_COMPS/
 #
 # CLONE/UPDATE ESP32-CAMERA
 #
-if [ -z $ENABLE_CAMERA ]; then
+if [ -z $CAMERA_BRANCH ]; then
   echo "Skipping ESP camera libs"
 else
   echo "Updating ESP32 Camera..."
   if [ ! -d "$AR_COMPS/esp32-camera" ]; then
-    git clone $CAMERA_REPO_URL "$AR_COMPS/esp32-camera"
+    git clone $CAMERA_REPO_URL "$AR_COMPS/esp32-camera" && \
+    git -C "$AR_COMPS/esp32-camera" checkout "$CAMERA_BRANCH"
   else
     git -C "$AR_COMPS/esp32-camera" fetch && \
     git -C "$AR_COMPS/esp32-camera" pull --ff-only
@@ -85,12 +86,13 @@ fi
 #
 # CLONE/UPDATE ESP-DL
 #
-if [ -z $ENABLE_DEEP_LEARNING ]; then
+if [ -z $DEEP_LEARNING_BRANCH ]; then
   echo "Skipping ESP Deep learning libs"
 else
   echo "Updating ESP-DL..."
   if [ ! -d "$AR_COMPS/esp-dl" ]; then
-    git clone $DL_REPO_URL "$AR_COMPS/esp-dl"
+    git clone $DL_REPO_URL "$AR_COMPS/esp-dl" && \
+    git -C "$AR_COMPS/esp-dl" checkout "$DEEP_LEARNING_BRANCH"
   else
     git -C "$AR_COMPS/esp-dl" fetch && \
     git -C "$AR_COMPS/esp-dl" pull --ff-only

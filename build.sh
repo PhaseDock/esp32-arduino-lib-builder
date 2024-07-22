@@ -18,6 +18,8 @@ DEPLOY_OUT=0
 export AR_BRANCH="2.0.17" #defaulting this to a known good version, can still be overridden
 export IDF_BRANCH="release/v4.4" #defaulting this to a known good version, can still be overridden
 export BLUEPAD32_BRANCH="4.1.0" #defaulting this to a known good version, can still be overridden
+export CAMERA_BRANCH="v2.0.6" #defaulting this to a known good version, can still be overridden
+export DEEP_LEARNING_BRANCH="v2.0" #defaulting this to a known good version, can still be overridden
 
 function print_help() {
     echo "Usage: build.sh [-s] [-A <arduino_branch>] [-I <idf_branch>] [-i <idf_commit>] [-c <path>] [-t <target>] [-b <build|menuconfig|idf_libs|copy_bootloader|mem_variant>] [config ...]"
