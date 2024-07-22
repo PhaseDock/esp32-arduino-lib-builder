@@ -10,6 +10,7 @@ INSIGHTS_REPO_URL="https://github.com/espressif/esp-insights.git"
 DSP_REPO_URL="https://github.com/espressif/esp-dsp.git"
 LITTLEFS_REPO_URL="https://github.com/joltwallet/esp_littlefs.git"
 TINYUSB_REPO_URL="https://github.com/hathach/tinyusb.git"
+BLUEPAD32_REPO_URL="https://github.com/ricardoquesada/esp-idf-arduino-bluepad32-template.git"
 
 #
 # CLONE/UPDATE ARDUINO
@@ -45,17 +46,22 @@ if [ -z $AR_BRANCH ]; then
 		fi
 	fi
 fi
-
-if [ "$AR_BRANCH" ]; then
-	git -C "$AR_COMPS/arduino" checkout "$AR_BRANCH" && \
-	git -C "$AR_COMPS/arduino" fetch
-# BOYD - when checking out a tag, this step throws an error:
-  #You are not currently on a branch.
-  #Please specify which branch you want to merge with.
-  #See git-pull(1) for details.
-#	git -C "$AR_COMPS/arduino" pull --ff-only
+#
+# CLONE/UPDATE BLUEPAD32
+#
+echo "Updating Bluepad32..."
+if [ ! -d "$AR_COMPS/bluepad32" ]; then
+	git clone $BLUEPAD32_REPO_URL "$AR_COMPS/bluepad32"
 fi
+
+if [ "$BLUEPAD32_BRANCH" ]; then
+	git -C "$AR_COMPS/bluepad32" checkout "$BLUEPAD32_BRANCH" && \
+	git -C "$AR_COMPS/bluepad32" fetch
+fi
+
 if [ $? -ne 0 ]; then exit 1; fi
+
+cp -rf $AR_COMPS/bluepad32/components/* $AR_COMPS/
 
 #
 # CLONE/UPDATE ESP32-CAMERA
