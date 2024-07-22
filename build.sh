@@ -20,6 +20,7 @@ export IDF_BRANCH="release/v4.4" #defaulting this to a known good version, can s
 export BLUEPAD32_BRANCH="4.1.0" #defaulting this to a known good version, can still be overridden
 export CAMERA_BRANCH="v2.0.6" #defaulting this to a known good version, can still be overridden
 export DEEP_LEARNING_BRANCH="v2.0" #defaulting this to a known good version, can still be overridden
+export RAINMAKER_BRANCH="2f7f487bc0fa835fb9ac9ce108c76a667e9d2f42" #commit of a known good build
 
 function print_help() {
     echo "Usage: build.sh [-s] [-A <arduino_branch>] [-I <idf_branch>] [-i <idf_commit>] [-c <path>] [-t <target>] [-b <build|menuconfig|idf_libs|copy_bootloader|mem_variant>] [config ...]"
