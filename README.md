@@ -14,7 +14,7 @@ cd esp32-arduino-lib-builder
 
 ### Build for Bluepad32
 
-Copy Bluepad32 componetns.
+Copy Bluepad32 components.
 
 ```sh
 cd components

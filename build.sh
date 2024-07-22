@@ -15,6 +15,7 @@ BUILD_TYPE="all"
 SKIP_ENV=0
 COPY_OUT=0
 DEPLOY_OUT=0
+export AR_BRANCH="2.0.17" #defaulting this to a known good version, can still be overridden
 
 function print_help() {
     echo "Usage: build.sh [-s] [-A <arduino_branch>] [-I <idf_branch>] [-i <idf_commit>] [-c <path>] [-t <target>] [-b <build|menuconfig|idf_libs|copy_bootloader|mem_variant>] [config ...]"
