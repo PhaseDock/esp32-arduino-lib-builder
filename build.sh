@@ -10,8 +10,8 @@ if ! [ -x "$(command -v git)" ]; then
     exit 1
 fi
 
-TARGET="all"
-BUILD_TYPE="all"
+TARGET="esp32"
+BUILD_TYPE="build"
 SKIP_ENV=0
 COPY_OUT=0
 DEPLOY_OUT=0
@@ -19,8 +19,8 @@ export AR_BRANCH="2.0.17" #defaulting this to a known good version, can still be
 export IDF_BRANCH="release/v4.4" #defaulting this to a known good version, can still be overridden
 export BLUEPAD32_BRANCH="4.1.0" #defaulting this to a known good version, can still be overridden
 export CAMERA_BRANCH="v2.0.6" #defaulting this to a known good version, can still be overridden
-export DEEP_LEARNING_BRANCH="v2.0" #defaulting this to a known good version, can still be overridden
-export RAINMAKER_BRANCH="2f7f487bc0fa835fb9ac9ce108c76a667e9d2f42" #commit of a known good build
+export DEEP_LEARNING_BRANCH="v1.1.0" #defaulting this to a known good version, can still be overridden
+export RAINMAKER_BRANCH="909c7f00be0cd3343ba18a174d403889f0ea314b" #commit of a known good build
 
 function print_help() {
     echo "Usage: build.sh [-s] [-A <arduino_branch>] [-I <idf_branch>] [-i <idf_commit>] [-c <path>] [-t <target>] [-b <build|menuconfig|idf_libs|copy_bootloader|mem_variant>] [config ...]"

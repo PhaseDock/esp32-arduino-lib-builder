@@ -45,6 +45,9 @@ if [ -z $AR_BRANCH ]; then
 			fi
 		fi
 	fi
+else
+  git -C "$AR_COMPS/arduino" checkout "$AR_BRANCH" && \
+  git -C "$AR_COMPS/arduino" fetch
 fi
 #
 # CLONE/UPDATE BLUEPAD32
@@ -93,9 +96,6 @@ else
   if [ ! -d "$AR_COMPS/esp-dl" ]; then
     git clone $DL_REPO_URL "$AR_COMPS/esp-dl" && \
     git -C "$AR_COMPS/esp-dl" checkout "$DEEP_LEARNING_BRANCH"
-  else
-    git -C "$AR_COMPS/esp-dl" fetch && \
-    git -C "$AR_COMPS/esp-dl" pull --ff-only
   fi
   if [ $? -ne 0 ]; then exit 1; fi
 fi
@@ -141,9 +141,7 @@ if [ ! -d "$AR_COMPS/esp-rainmaker" ]; then
     git -C "$AR_COMPS/esp-rainmaker" checkout $RAINMAKER_BRANCH && \
     git -C "$AR_COMPS/esp-rainmaker" submodule update --init --recursive
 else
-	git -C "$AR_COMPS/esp-rainmaker" fetch && \
-	git -C "$AR_COMPS/esp-rainmaker" pull --ff-only && \
-    git -C "$AR_COMPS/esp-rainmaker" submodule update --init --recursive
+	git -C "$AR_COMPS/esp-rainmaker" checkout $RAINMAKER_BRANCH
 fi
 if [ $? -ne 0 ]; then exit 1; fi
 
